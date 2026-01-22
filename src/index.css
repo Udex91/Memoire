@@ -1,0 +1,198 @@
+/* =====================
+   Base styles
+===================== */
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f4f6f8;
+  color: #1f2933;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* =====================
+   Layout
+===================== */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+}
+
+.notes-list {
+  display: grid;
+  grid-gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* =====================
+   Notes
+===================== */
+.note {
+  background-color: #f9f9fb;
+  border-radius: 12px;
+  padding: 1rem;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  white-space: pre-wrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* New note */
+.note.new {
+  background-color: #eef6ff;
+  border: 2px dashed #c7dcff;
+}
+
+/* =====================
+   Textarea
+===================== */
+textarea {
+  border: none;
+  resize: none;
+  background: transparent;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: inherit;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+/* =====================
+   Note footer
+===================== */
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* =====================
+   Buttons
+===================== */
+.save {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.save:hover {
+  background-color: #1d4ed8;
+}
+
+/* =====================
+   Icons
+===================== */
+.delete-icon {
+  cursor: pointer;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.delete-icon:hover {
+  color: #ef4444;
+}
+
+/* =====================
+   Search bar
+===================== */
+.search {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.search input {
+  border: none;
+  background: transparent;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+/* =====================
+   Empty state
+===================== */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
+  padding: 2rem 0;
+}
+
+/* =====================
+   Dark mode
+===================== */
+.dark-mode {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+.dark-mode .note {
+  background-color: #1e293b;
+}
+
+.dark-mode .note.new {
+  background-color: #1e3a8a;
+}
+
+.dark-mode .search {
+  background-color: #1e293b;
+}
+
+.dark-mode h1 {
+  color: #ffffff;
+}
+
+.note-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-icon {
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+.action-icon:hover {
+  opacity: 0.7;
+}
