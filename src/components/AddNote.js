@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React from "react"
+import { useState } from 'react';
 
 const AddNote = ({ createNote }) => {
-  const [draftContent, setDraftContent] = useState('');
-  const CHARACTER_LIMIT = 200;
+  const [noteText, setNoteText] = useState('');
+  const characterLimit = 200;
 
-  const updateDraftContent = (event) => {
-    if (CHARACTER_LIMIT - event.target.value.length >= 0) {
-      setDraftContent(event.target.value);
+  const handleChange = (e) => {
+    if (characterLimit - e.target.value.length >= 0) {
+      setNoteText(e.target.value);
     }
   };
 
-  const saveDraft = () => {
-    if (draftContent.trim().length === 0) return;
-
-    createNote(draftContent);
-    setDraftContent('');
+  const handleSave = () => {
+    if (noteText.trim().length === 0) return;
+    createNote(noteText);
+    setNoteText('');
   };
 
   return (
@@ -22,12 +22,12 @@ const AddNote = ({ createNote }) => {
       <textarea
         rows="8"
         placeholder="Start typing your memoire here..."
-        value={draftContent}
-        onChange={updateDraftContent}
+        value={noteText}
+        onChange={handleChange}
       />
       <div className="note-footer">
-        <small>{CHARACTER_LIMIT - draftContent.length} remaining</small>
-        <button className="save" onClick={saveDraft}>
+        <small>{characterLimit - noteText.length} remaining</small>
+        <button className="save" onClick={handleSave}>
           Save
         </button>
       </div>

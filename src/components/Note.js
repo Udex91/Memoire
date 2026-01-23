@@ -1,7 +1,22 @@
-import React, { useState } from 'react';
-import { MdDeleteForever, MdEdit, MdCheck, MdClose } from 'react-icons/md';
+import React from 'react';
+import { useState } from 'react';
+import {
+  MdDeleteForever,
+  MdEdit,
+  MdCheck,
+  MdClose,
+  MdPushPin,
+} from 'react-icons/md';
 
-const Note = ({ id, text, date, handleDeleteNote, handleUpdateNote }) => {
+const Note = ({
+  id,
+  text,
+  date,
+  pinned,
+  handleDeleteNote,
+  handleUpdateNote,
+  handleTogglePin,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(text);
 
@@ -17,7 +32,7 @@ const Note = ({ id, text, date, handleDeleteNote, handleUpdateNote }) => {
   };
 
   return (
-    <div className="note">
+    <div className={`note ${pinned ? 'pinned-note' : ''}`}>
       {isEditing ? (
         <textarea
           rows="8"
@@ -32,16 +47,15 @@ const Note = ({ id, text, date, handleDeleteNote, handleUpdateNote }) => {
         <small>{date}</small>
 
         <div className="note-actions">
+          <MdPushPin
+            className={`action-icon ${pinned ? 'pinned' : ''}`}
+            onClick={() => handleTogglePin(id)}
+          />
+
           {isEditing ? (
             <>
-              <MdCheck
-                className="action-icon"
-                onClick={saveEdit}
-              />
-              <MdClose
-                className="action-icon"
-                onClick={cancelEdit}
-              />
+              <MdCheck className="action-icon" onClick={saveEdit} />
+              <MdClose className="action-icon" onClick={cancelEdit} />
             </>
           ) : (
             <>

@@ -7,15 +7,21 @@ const NotesList = ({
   handleAddNote,
   handleDeleteNote,
   handleUpdateNote,
+  handleTogglePin,
 }) => {
   if (notes.length === 0) {
     return (
       <div className="notes-list">
         <AddNote createNote={handleAddNote} />
-
         <div className="empty-state">
           <p>No memoires yet.</p>
-          <p>Start by writing one ✍️</p>
+          <p>
+    Start by writing one{' '}
+    <span role="img" aria-label="writing hand">
+    ✍️
+    </span>
+    </p>
+
         </div>
       </div>
     );
@@ -29,8 +35,10 @@ const NotesList = ({
           id={note.id}
           text={note.text}
           date={note.date}
+          pinned={note.pinned}
           handleDeleteNote={handleDeleteNote}
           handleUpdateNote={handleUpdateNote}
+          handleTogglePin={handleTogglePin}
         />
       ))}
 
